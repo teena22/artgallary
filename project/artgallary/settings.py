@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'myart',
+    'crispy_forms',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -70,7 +72,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'artgallary.wsgi.application'
 
+TEMPLATE_DIRS = (
+  "/home/teena/newproject/project/myart/templates",
 
+)
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -107,6 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
+SITE_ID=1
 
 LANGUAGE_CODE = 'en-us'
 
@@ -129,4 +135,3 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
