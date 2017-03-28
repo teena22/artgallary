@@ -18,6 +18,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	  {
 	  	location.href="/contact/";
 	  }
+	  function login()
+	  {
+	  	location.href="/login/";
+	  }
+	  function signup()
+	  {
+	  	location.href="/register/";
+	  }
+	  function logout()
+	  {
+	  	location.href="/logout/";
+	  }
+	  function profile()
+	  {
+	  	location.href="/upload/";
+	  }
   </script>
 </head>
 <body>
@@ -29,28 +45,38 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	<ul class="nav">
 		<li class="home"><a href="/#">Home</a></li>
-		<li class="news"><a href="/#">Gallery</a></li>
+		
 		<li class="contact"><a href="javascript:contact();">Contact</a></li>
+		{% if not user.is_authenticated %}
+			<li><button onclick=login()>Log In</a></button></li>
+			<li><button onclick=signup()>Sign Up</a></button></li>
+		{% else %}
+			
+			<li class="news"><a href="javascript:profile();">View Profile</a></li>
+			<li><button onclick=logout()>Log Out</a></button></li>
+		{% endif %}
 	</ul>
+	<div><br><br><br></div> 
 	<div class="clear"></div>
 	<div class="text">
 		<div class="text-h">
-			<h2>Lorem Ipsum is simply dummy</h2>
-			<h3>Lorem Ipsum has been the industry's standard dummy text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor Lorem ipsum&nbsp;<b>© All Rights Reserved | Designed by&nbsp; <a href="http://w3layouts.com/"> W3Layouts</a></b></h3>
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		</div>
 		<div class="text-b">
-			<form id="searchForm">
+		 {% if error %}
+			<p style="color: red;">Please submit a search term.</p>
+		 {% endif %}
+		<form id="searchForm" method='GET' action='/search/'>
         	   <fieldset>
                    <div class="input">
-                        <input type="text" name="s" id="s" value="Enter your search" />
-                          <input type="submit" id="searchSubmit" value="" />
-                    </div>
-                  
-               </fieldset>
-            </form>
-			</div>
-			<div class="clear"></div>
+                        <input type="text" name="q" id="s" placeholder="Search Artist" />
+                          <input type="submit" id="searchSubmit" value="Search" />
+                   </div>
+                  </fieldset>
+         </div>
+	<div class="clear"></div>
 		</div>
+	</div>
 </div>
 </div>
 </div>
@@ -59,36 +85,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div id="main" role="main">
       <ul id="tiles">
         <!-- These are our grid blocks -->
-        <li><a href="single.html"><img src="/static/myart/home/images/image_1.jpg" width="360" height="270"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_2.jpg" width="360" height="480"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_3.jpg" width="360" height="160"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_4.jpg" width="360" height="260"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_5.jpg" width="360" height="300"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_6.jpg" width="360" height="290"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_7.jpg" width="360" height="200"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_8.jpg" width="360" height="280"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_9.jpg" width="360" height="440"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_10.jpg" width="360" height="320"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_1.jpg" width="360" height="270"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_2.jpg" width="360" height="480"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_3.jpg" width="360" height="160"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_4.jpg" width="360" height="260"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_5.jpg" width="360" height="300"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_6.jpg" width="360" height="290"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_7.jpg" width="360" height="200"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_8.jpg" width="360" height="280"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_9.jpg" width="360" height="440"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_10.jpg" width="360" height="320"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_1.jpg" width="360" height="270"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_2.jpg" width="360" height="480"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_3.jpg" width="360" height="160"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_4.jpg" width="360" height="260"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_5.jpg" width="360" height="300"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_6.jpg" width="360" height="290"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_7.jpg" width="360" height="200"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_8.jpg" width="360" height="280"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_9.jpg" width="360" height="440"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
-        <li><a href="single.html"><img src="/static/myart/home/images/image_10.jpg" width="360" height="320"><p>Lorem Ipsum has been the industry's standard dummy text Ipsum</p></a></li>
+        <li><a href="single.html"><img src="/static/myart/home/image_1.jpg" width="360" height="270"></a></li>
+        <li><a href="single.html"><img src="/static/myart/home/image_2.jpg" width="360" height="480"></a></li>
+        <li><a href="single.html"><img src="/static/myart/home/image_3.jpg" width="360" height="160"></a></li>
+        <li><a href="single.html"><img src="/static/myart/home/image_4.jpg" width="360" height="260"></a></li>
+        <li><a href="single.html"><img src="/static/myart/home/image_5.jpg" width="360" height="300"></a></li>
+        <li><a href="single.html"><img src="/static/myart/home/image_6.jpg" width="360" height="290"></a></li>
+        <li><a href="single.html"><img src="/static/myart/home/image_7.jpeg" width="360" height="200"></a></li>
+        <li><a href="single.html"><img src="/static/myart/home/image_8.jpg" width="360" height="280"></a></li>
+        <li><a href="single.html"><img src="/static/myart/home/image_9.jpg" width="360" height="440"></a></li>
+        <li><a href="single.html"><img src="/static/myart/home/image_10.jpg" width="360" height="320"></a></li>
+       
         <!-- End of grid blocks -->
       </ul>
 	</div>

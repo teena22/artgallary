@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import authenticate, get_user_model, login, logout
-
+from .models import Painting, User
 User = get_user_model()
 
 class UserLoginForm(forms.Form):
@@ -24,6 +24,7 @@ class UserLoginForm(forms.Form):
 class UserRegisterForm(forms.ModelForm):
     name = forms.CharField(label='Full Name')
     email = forms.EmailField(label='Email')
+    location = forms.CharField(label='Location')
     password = forms.CharField(widget=forms.PasswordInput)
     password2 = forms.CharField(widget=forms.PasswordInput,label='Confirm Password')
     
@@ -33,8 +34,10 @@ class UserRegisterForm(forms.ModelForm):
             'name',
             'username',
             'email',
+            'location',
             'password',
             'password2',
+            
         ]
     def clean(self, *args, **kwargs):
         email = forms.EmailField(label='Email')
@@ -47,3 +50,19 @@ class UserRegisterForm(forms.ModelForm):
             raise forms.ValidationError("This email already been registered")
             
         return super(UserRegisterForm,self).clean(*args, **kwargs)
+       
+class UploadForm(forms.ModelForm):
+    class Meta:
+        model = Painting
+        fields = [
+            
+            "title",
+            "painting",
+        ]
+        
+class UploadImageForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = [
+            "pic",
+        ]

@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 AUTH_USER_MODEL = 'myart.User'
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -54,10 +55,12 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'artgallary.urls'
 
+PWD = os.path.dirname(os.path.realpath(__file__ )) 
 TEMPLATES = [
     {
+    	
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(PWD, "Templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,15 +70,13 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
+        
     },
 ]
 
 WSGI_APPLICATION = 'artgallary.wsgi.application'
 
-TEMPLATE_DIRS = (
-  "/home/teena/newproject/project/myart/templates",
 
-)
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -84,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'newart',
         'USER': 'teena22',
-        'PASSWORD': 'ashishG@2212',
+        'PASSWORD': 'ashishG@2212',#secretes.json
         'HOST': 'localhost',
         'PORT': '',
     }
